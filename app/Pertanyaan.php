@@ -35,7 +35,9 @@ class Pertanyaan extends Model
     }
 
     public static function update_pertanyaan($id, $request){
-        $pertanyaan = DB::table('tbl_pertanyaan')->where('id', $id)->update(['judul_pertanyaan'=>$request['judul_pertanyaan'],'isi_pertanyaan'=>$request['isi_pertanyaan']]);
+        $date = Carbon::now();
+
+        $pertanyaan = DB::table('tbl_pertanyaan')->where('id', $id)->update(['judul_pertanyaan'=>$request['judul_pertanyaan'],'isi_pertanyaan'=>$request['isi_pertanyaan'], 'updated_at'=>$date]);
         return $pertanyaan;
     }
 
